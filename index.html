@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maafin Aku Ya 🧸</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffd6e7,#ffe8c8);
+overflow:hidden;
+}
+
+.card{
+width:340px;
+background:#fff;
+padding:25px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+animation:muncul .8s;
+position:relative;
+z-index:2;
+}
+
+@keyframes muncul{
+from{
+opacity:0;
+transform:scale(.7);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.teddy{
+font-size:95px;
+animation:lompat 2s infinite;
+}
+
+@keyframes lompat{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+}
+
+h1{
+margin:10px 0;
+color:#ff4f81;
+}
+
+p{
+color:#555;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+margin:5px;
+transition:.3s;
+}
+
+#yes{
+background:#ff5c8d;
+color:white;
+}
+
+#yes:hover{
+transform:scale(1.08);
+}
+
+#no{
+background:#ddd;
+position:absolute;
+}
+
+#love{
+position:fixed;
+left:0;
+top:100%;
+font-size:25px;
+animation:naik 6s linear infinite;
+opacity:.7;
+}
+
+@keyframes naik{
+0%{
+transform:translateY(0);
+}
+100%{
+transform:translateY(-120vh);
+}
+}
+
+#hasil{
+margin-top:18px;
+font-size:18px;
+font-weight:bold;
+color:#ff4f81;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+<div class="teddy">🧸</div>
+
+<h1>Maafin Aku Ya...</h1>
+
+<p>
+Teteh maaf adeee yaaaaaaaa hihihi,
+gaboleee malahh malahh iiiii nanti cantik nya ilangg lohh
+</p>
+
+<button id="yes">💖 Maafin</button>
+<button id="no">❌ Nggak</button>
+
+<div id="hasil"></div>
+</div>
+
+<script>
+
+const no=document.getElementById("no");
+
+function pindah(){
+const x=Math.random()*(window.innerWidth-120);
+const y=Math.random()*(window.innerHeight-70);
+
+no.style.left=x+"px";
+no.style.top=y+"px";
+}
+
+no.addEventListener("mouseover",pindah);
+no.addEventListener("click",pindah);
+
+document.getElementById("yes").onclick=()=>{
+
+document.getElementById("hasil").innerHTML=
+"🧸 YEAAY!! Makasih udah maafin Adee yaa, yu kita call sampe subuh😭😭";
+
+for(let i=0;i<35;i++){
+
+let love=document.createElement("div");
+love.id="love";
+love.innerHTML=Math.random()>0.5?"💖":"🧸";
+
+love.style.left=Math.random()*100+"vw";
+love.style.animationDuration=(Math.random()*3+3)+"s";
+love.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(love);
+
+setTimeout(()=>{
+love.remove();
+},6000);
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
